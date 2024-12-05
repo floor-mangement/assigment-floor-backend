@@ -1,9 +1,14 @@
-import express, { json } from 'express';
+// import express, { json } from 'express';
+const express = require("express");
+const { json } = require("express");
 const app = express();
-import connectDB from "./configs/db.js";
-import cors from 'cors';
+const connectDB= require("./configs/db.js");
+// import connectDB from "./configs/db.js";
+const cors = require("cors");
+// import cors from 'cors';
 app.use(json());
-import Routes from "./routes/index.js";
+// import Routes from "./routes/index.js";
+const Routes = require("./routes/index.js");
 
 app.use(cors({ origin: "*" }));
 

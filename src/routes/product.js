@@ -1,6 +1,9 @@
-import { Router } from "express";
+// import { Router } from "express";
 
+const { Router } = require("express");
 const productInfo = Router();
+
+// const productInfo = Router();
 
 productInfo.get("/all-product",(req,res)=>{
     res.send({
@@ -8,4 +11,4 @@ productInfo.get("/all-product",(req,res)=>{
     })
 })
 
-export default productInfo;
+module.exports = productInfo;
