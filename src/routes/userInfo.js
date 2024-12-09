@@ -1,6 +1,6 @@
 // import { Router } from "express";
 // import { LogingUser , FindUser} from "../controllers/userController.js"
-const  { LogingUser , FindUser} = require("../controllers/userController.js");
+const  { LogingUser , FindUser,RegisterUser} = require("../controllers/userController.js");
 
 // const userInfor = Router();
 
@@ -14,6 +14,7 @@ userInfor.get("/all-user" , (req,res)=>{
 })
 
 userInfor.get("/login" , LogingUser);
+userInfor.post("/register" , RegisterUser);
 userInfor.post("/find-user" , FindUser);
 
 

@@ -1,6 +1,6 @@
 // import {getAllUser , getfindOneUser} from "../services/userServices.js";
 
-const { getAllUser ,getfindOneUser } = require("../services/userServices.js");
+const { getAllUser ,getfindOneUser ,createNewUser } = require("../services/userServices.js");
 
 // const { getAllUser, getfindOneUser } = require("../services/userServices.js");
 
@@ -37,7 +37,7 @@ const LogingUser = async (req, res) =>{
 const FindUser = async (req, res) =>{
     console.log("in FindUser");
     console.log(req.body);
-    const useId = req.body;
+    const useId = req.body.id;
 
     try {
         const databaseUser = await getfindOneUser(useId);
@@ -53,15 +53,24 @@ const FindUser = async (req, res) =>{
         res.status(500).json({msg:"Internal Server Error"});
         
     }
-    // const dataBaseUser = getfindOneUser(useId);
+  
+}
 
-    // console.log(dataBaseUser);
+const RegisterUser =async (req,res) =>{
 
-    // if(dataBaseUser){
-    //     res.status(200).json(dataBaseUser);
-    // }else{
-    //     res.status(400).json("Error");
-    // }
+    console.log(req.body);
+    const user = req.body;
+
+    try {
+        const newUser = await createNewUser(user);
+        console.log(newUser);
+        res.status(200).json(newUser);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json("Internal Server Error");
+    }
+     
+
 }
 
 //this is nodejs export funtion
@@ -69,4 +78,5 @@ const FindUser = async (req, res) =>{
 module.exports ={
     LogingUser,
     FindUser,
+    RegisterUser,
 };

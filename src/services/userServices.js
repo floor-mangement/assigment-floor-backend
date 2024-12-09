@@ -12,14 +12,28 @@ const User = require("../models/userModel.js");
     }
 
     const getfindOneUser =async (useId) => {
+        console.log(useId);
         const user = await User.findById(useId);
+        console.log(user);
         return user;
+    }
+
+    const createNewUser = async (user) =>{
+        console.log(user);
+        try {
+            return await User.create(user);
+        } catch (error) {
+            console.log(error);
+            return "DataBase Syntax Error";
+        }
+        
     }
     
 
 module.exports ={
     getAllUser,
-    getfindOneUser
+    getfindOneUser,
+    createNewUser
 }
 
 
